@@ -27,6 +27,12 @@ export default function UserListedMovies() {
     }
   }, [email]);
 
+  if(!movies){ return(
+    <h1>
+      No movie listed
+    </h1>
+  )}
+
   window.onscroll = () => {
     setIsScrolled(window.pageYOffset === 0 ? false : true);
     return () => (window.onscroll = null);
