@@ -7,6 +7,7 @@ import BackgroundImage from "../components/BackgroundImage";
 import Header from "../components/Header";
 import { onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
 import { firebaseAuth } from "../utils/firebase-config";
+import Popup from "../components/Popup";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -17,7 +18,8 @@ function Login() {
     try {
       await signInWithEmailAndPassword(firebaseAuth, email, password);
     } catch (error) {
-      console.log(error);
+      console.log(error.message);
+      alert(error.message);
     }
   };
 

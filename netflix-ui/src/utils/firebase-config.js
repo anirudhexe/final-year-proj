@@ -1,15 +1,16 @@
-import { getAuth } from "firebase/auth";
+
 import { initializeApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyC1Hf0_rdWLBzDPJPcO9CJN4y6M6-EgKH4",
-  authDomain: "react-auth-6788d.firebaseapp.com",
-  projectId: "react-auth-6788d",
-  storageBucket: "react-auth-6788d.appspot.com",
-  messagingSenderId: "131797845021",
-  appId: "1:131797845021:web:3f7ff4766e2b89ca5d32f4",
-  measurementId: "G-VWPBR1NSLL",
+  apiKey: "AIzaSyDrEO6kNMhv4yllheRBfxXhqn_tU6ZZuLY",
+  authDomain: "ott-platform-83e56.firebaseapp.com",
+  projectId: "ott-platform-83e56",
+  storageBucket: "ott-platform-83e56.appspot.com",
+  messagingSenderId: "177419981633",
+  appId: "1:177419981633:web:5d8137050926274f0ac7c0"
 };
 
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
-export const firebaseAuth = getAuth(app);
+export const firebaseAuth=getAuth(app);
