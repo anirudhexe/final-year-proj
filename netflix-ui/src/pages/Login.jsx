@@ -12,15 +12,19 @@ import Popup from "../components/Popup";
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
   const navigate = useNavigate();
 
   const handleLogin = async () => {
+    setIsLoading(true);
     try {
       await signInWithEmailAndPassword(firebaseAuth, email, password);
     } catch (error) {
       console.log(error.message);
       alert(error.message);
     }
+    setIsLoading(false);
   };
 
   onAuthStateChanged(firebaseAuth, (currentUser) => {
@@ -50,7 +54,7 @@ function Login() {
                 onChange={(e) => setPassword(e.target.value)}
                 value={password}
               />
-              <button onClick={handleLogin}>Login to your account</button>
+              <button onClick={handleLogin}>{isLoading ? 'Loading...' : 'Login to your account'}</button>
             </div>
           </div>
         </div>

@@ -10,6 +10,7 @@ import Header from "../components/Header";
 import { firebaseAuth } from "../utils/firebase-config";
 function Signup() {
   const [showPassword, setShowPassword] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [formValues, setFormValues] = useState({
     email: "",
     password: "",
@@ -17,12 +18,15 @@ function Signup() {
   const navigate = useNavigate();
 
   const handleSignIn = async () => {
+    setIsLoading(true);
     try {
       const { email, password } = formValues;
       await createUserWithEmailAndPassword(firebaseAuth, email, password);
     } catch (error) {
       console.log(error);
+      alert(error.message);
     }
+    setIsLoading(false);
   };
 
   onAuthStateChanged(firebaseAuth, (currentUser) => {
@@ -73,7 +77,7 @@ function Signup() {
               <button onClick={() => setShowPassword(true)}>Get Started</button>
             )}
           </div>
-          {showPassword && <button onClick={handleSignIn}>Log In</button>}
+          {showPassword && <button onClick={handleSignIn}>{isLoading ? 'Loading...' : 'Log in'}</button>}
         </div>
       </div>
     </Container>
